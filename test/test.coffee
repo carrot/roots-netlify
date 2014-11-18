@@ -32,3 +32,8 @@ describe 'basic setup', ->
     compiled = path.join(@public, '_headers')
     expected = path.join(@public, 'expected', '_headers')
     h.file.matches_file(compiled, expected).should.be.true
+
+  it 'compiles the redirects config file correctly', ->
+    compiled = path.join(@public, '_redirects')
+    expected = path.join(@public, 'expected', '_redirects')
+    h.file.matches_file(compiled, expected).should.be.true

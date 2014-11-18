@@ -34,7 +34,7 @@ module.exports =
         '302':
           '/temp_redirect': '/'
         '404':
-          'ecommerce'
+          '/ecommerce': '/closed'
       rewrites:
         '/*': '/index.html'
       headers:
