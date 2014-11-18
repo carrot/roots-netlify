@@ -1,0 +1,41 @@
+{
+  "name": "roots-netlify",
+  "version": "0.0.0",
+  "description": "A roots extension for configuring netlify",
+  "main": "lib",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "roots-util": "0.0.4"
+  },
+  "devDependencies": {
+    "coffee-script": "1.7.x",
+    "mocha": "*",
+    "should": "*",
+    "roots": "3.x",
+    "coveralls": "2.x",
+    "istanbul": "0.3.x"
+  },
+  "peerDependencies": {
+    "roots": "3.x"
+  },
+  "scripts": {
+    "test": "mocha",
+    "coverage": "make build; NODE_ENV=test istanbul cover ./node_modules/mocha/bin/_mocha; make unbuild; open coverage/lcov-report/index.html;",
+    "coveralls": "make build; make coveralls; make unbuild;"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/carrot/roots-netlify.git"
+  },
+  "keywords": [
+    "roots-extension"
+  ],
+  "author": "Josh Rowley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/carrot/roots-netlify/issues"
+  },
+  "homepage": "https://github.com/carrot/roots-netlify"
+}
