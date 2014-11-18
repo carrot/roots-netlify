@@ -20,10 +20,15 @@ after ->
 
 # tests
 
-describe 'development', ->
+describe 'basic setup', ->
 
   before (done) -> compile_fixture.call(@, 'basic', -> done())
 
   it 'compiles basic project', ->
     p = path.join(@public, 'index.html')
     h.file.exists(p).should.be.ok
+
+  it 'compiles the headers config file correctly', ->
+    compiled = path.join(@public, '_headers')
+    expected = path.join(@public, 'expected', '_headers')
+    h.file.matches_file(compiled, expected).should.be.true
