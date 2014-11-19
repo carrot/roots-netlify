@@ -1,7 +1,7 @@
 Roots Netlify
 =============================
 
-[![npm](https://badge.fury.io/js/roots-netlify.png)](http://badge.fury.io/js/roots-netlify) [![tests](https://travis-ci.org/carrot/roots-netlify.png?branch=master)](https://travis-ci.org/carrot/roots-netlify) [![dependencies](https://david-dm.org/carrot/roots-netlify.png?theme=shields.io)](https://david-dm.org/carrot/roots-netlify)
+[![npm](https://badge.fury.io/js/roots-netlify.png)](http://badge.fury.io/js/roots-netlify) [![tests](https://travis-ci.org/carrot/roots-netlify.png?branch=master)](https://travis-ci.org/carrot/roots-netlify) [![dependencies](https://david-dm.org/carrot/roots-netlify.png?theme=shields.io)](https://david-dm.org/carrot/roots-netlify) [![Coverage Status](https://img.shields.io/coveralls/carrot/roots-netlify.svg)](https://coveralls.io/r/carrot/roots-netlify?branch=master)
 
 A roots extension for creating Netlify configuration files.
 
@@ -13,7 +13,7 @@ A roots extension for creating Netlify configuration files.
 
 This abstracts Netlify's config files into your `app.coffee` with the rest of your configs so they can be one big happy family. This also allows you to create different Netlify configs based on your [roots environment](http://roots.readthedocs.org/en/latest/environments.html).
 
-It's also common roots convention to start files with an `_` to ignore files when compiling. Since Netlify is configured with a `_headers` and `_redirects` file, using this extension allows you keep that nice clean convention throughout the whole project.
+It's also a common roots convention to start files with an `_` to ignore them during compilation. Since Netlify would normally be configured with a `_headers` and `_redirects` file, using this extension allows you keep that nice clean convention throughout the whole project.
 
 ### Installation & Usage
 
