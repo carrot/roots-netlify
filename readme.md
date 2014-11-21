@@ -51,8 +51,6 @@ Read the Netlify documentation on [redirects](https://docs.netlify.com/redirects
 
 Redirects added to the `redirects` object return a status code of `301` while those added to the `rewrites` object will return `200` (a rewrite). Netlify also [supports](https://docs.netlify.com/redirects#http-status-codes) two other status codes: `302` and `404`. In order to configure your redirects for these, add a `302` or `404` key to `redirects` and nest your configuration object there (see example above).
 
-> **Note:** `302` and `404` redirects are currently not supported in this extension. Use the `redirects` (`301`) or `rewrites` (`200`) configuration keys instead.
-
 ### License & Contributing
 
 - Details on the license [can be found here](LICENSE.md)
