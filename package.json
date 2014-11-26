@@ -1,6 +1,6 @@
 {
   "name": "roots-netlify",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A roots extension for configuring netlify",
   "main": "lib",
   "directories": {
