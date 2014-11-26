@@ -15,12 +15,9 @@
     "coffee-script": "1.7.x",
     "mocha": "*",
     "should": "*",
-    "roots": "3.x",
+    "roots": "3.0.0-rc.10",
     "coveralls": "2.x",
     "istanbul": "0.3.x"
-  },
-  "peerDependencies": {
-    "roots": "3.x"
   },
   "scripts": {
     "test": "mocha",
