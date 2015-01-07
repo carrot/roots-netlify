@@ -37,3 +37,16 @@ describe 'basic setup', ->
     compiled = path.join(@public, '_redirects')
     expected = path.join(@public, 'expected', '_redirects')
     h.file.matches_file(compiled, expected).should.be.true
+
+describe 'promises support', ->
+  before (done) -> compile_fixture.call(@, 'promises', -> done())
+
+  it 'compiles the headers config file using promises grep', ->
+    compiled = path.join(@public, '_headers')
+    expected = path.join(@public, 'expected', '_headers')
+    h.file.matches_file(compiled, expected).should.be.true
+
+  it 'compiles the redirects config file using promises', ->
+    compiled = path.join(@public, '_redirects')
+    expected = path.join(@public, 'expected', '_redirects')
+    h.file.matches_file(compiled, expected).should.be.true
