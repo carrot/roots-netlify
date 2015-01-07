@@ -53,25 +53,20 @@ Redirects added to the `redirects` object return a status code of `301` while th
 
 ### Promises
 
-Instead of passing the regular options object into the extension, you can also pass a promise for an options object, in case you need to perform any asynchronous work (such as making an http request) before configuring roots-netlify.
+Instead of passing the regular options object into the extension, you can also pass a promise for an options object in case you need to perform any asynchronous work (such as loading a file or making an http request) before configuring roots-netlify.
+
 
 ```coffee
-W = require 'when'
+fs     = require 'fs'
+nodefn = require 'when/node'
+yaml   = require 'js-yaml'
 
-opts =
-  redirects:
-    '/news': '/blog'
-    '/news/:year/:month:/:date/:slug': '/blog/:year/:month/:date/:story_id'
-  rewrites:
-    '/*': '/index.html'
-  headers:
-    '/*':
-      'X-Frame-Options': 'DENY'
-      'X-XSS-Protection': '1; mode=block'
+config = nodefn.call(fs.readFile, 'config.yaml')
+  .then (contents) -> yaml.safeLoad(contents)
 
 module.exports =
   extensions: [
-    netlify(W.resolve(opts))
+    netlify(config)
   ]
 ```
 
