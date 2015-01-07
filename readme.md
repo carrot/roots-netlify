@@ -51,6 +51,25 @@ Read the Netlify documentation on [redirects](https://docs.netlify.com/redirects
 
 Redirects added to the `redirects` object return a status code of `301` while those added to the `rewrites` object will return `200` (a rewrite). Netlify also [supports](https://docs.netlify.com/redirects#http-status-codes) two other status codes: `302` and `404`. In order to configure your redirects for these, add a `302` or `404` key to `redirects` and nest your configuration object there (see example above).
 
+### Promises
+
+Instead of passing the regular options object into the extension, you can also pass a promise for an options object in case you need to perform any asynchronous work (such as loading a file or making an http request) before configuring roots-netlify.
+
+
+```coffee
+fs     = require 'fs'
+nodefn = require 'when/node'
+yaml   = require 'js-yaml'
+
+config = nodefn.call(fs.readFile, 'config.yaml')
+  .then (contents) -> yaml.safeLoad(contents)
+
+module.exports =
+  extensions: [
+    netlify(config)
+  ]
+```
+
 ### License & Contributing
 
 - Details on the license [can be found here](LICENSE.md)
