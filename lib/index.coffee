@@ -4,8 +4,6 @@ _         = require 'lodash'
 W         = require 'when'
 
 module.exports = (opts) ->
-  codes = ['200', '301', '302', '404']
-
   class RootsNetlify
     constructor: (@roots) ->
       @util = new RootsUtil(@roots)
@@ -13,7 +11,7 @@ module.exports = (opts) ->
     setup: ->
       W(opts).with(@)
         .then (opts) ->
-          @opts = _.defaults(opts, {redirects: {}, rewrites: {}, headers: {}})
+          @opts = _.defaults(opts, {redirects: {}, headers: {}})
         .then ->
           W.all([write_headers.call(@), write_redirects.call(@)])
 
@@ -26,15 +24,5 @@ module.exports = (opts) ->
       @util.write '_headers', res
 
     write_redirects = ->
-      redirects = _.pick(@opts.redirects, codes)
-      redirects['200'] ?= {}
-      redirects['301'] ?= {}
-      _.merge(redirects['200'], @opts.rewrites)
-      _.merge(redirects['301'], _.omit(@opts.redirects, codes))
-
-      res = _.reduce redirects, (str, conf, code) ->
-        for k, v of conf
-          str += "#{k} #{v} #{code}\n"
-        return str
-      , ''
+      res = @opts.redirects.join('\n')
       @util.write '_redirects', res
