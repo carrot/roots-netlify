@@ -2,16 +2,14 @@ netlify = require '../../..'
 W       = require 'when'
 
 config =
-  redirects:
-    '/news': '/blog'
-    '/news/:year/:month:/:date/:slug': '/blog/:year/:month/:date/:story_id'
-    '/news/*': '/blog/:splat'
-    '302':
-      '/temp_redirect': '/'
-    '404':
-      '/ecommerce': '/closed'
-  rewrites:
-    '/*': '/index.html'
+  redirects: [
+    '/* /index.html 200'
+    '/news /blog 301'
+    '/news/:year/:month:/:date/:slug /blog/:year/:month/:date/:story_id 301'
+    '/news/* /blog/:splat 301'
+    '/temp_redirect / 302'
+    '/ecommerce /closed 404'
+  ]
   headers:
     '/protected/path':
       'Cache-Control': 'max-age: 3000'
