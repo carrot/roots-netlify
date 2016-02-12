@@ -27,16 +27,14 @@ netlify = require 'roots-netlify'
 module.exports =
   extensions: [
     netlify
-      redirects:
-        '/news': '/blog'
-        '/news/:year/:month:/:date/:slug': '/blog/:year/:month/:date/:story_id'
-        '/news/*': '/blog/:splat'
-        '302':
-          '/temp_redirect': '/'
-        '404':
-          '/ecommerce': '/closed'
-      rewrites:
-        '/*': '/index.html'
+      redirects: [
+        '/news /blog 200'
+        '/news/:year/:month:/:date/:slug /blog/:year/:month/:date/:story_id 200'
+        '/news/* /blog/:splat 200'
+        '/redirect / 301'
+        '/temp_redirect / 302'
+        '/ecommerce /closed 404'
+      ]
       headers:
         '/protected/path':
           'Cache-Control': 'max-age: 3000'
@@ -49,7 +47,7 @@ module.exports =
 
 Read the Netlify documentation on [redirects](https://docs.netlify.com/redirects/) and [headers](https://docs.netlify.com/headers_and_basic_auth) to learn more.
 
-Redirects added to the `redirects` object return a status code of `301` while those added to the `rewrites` object will return `200` (a rewrite). Netlify also [supports](https://docs.netlify.com/redirects#http-status-codes) two other status codes: `302` and `404`. In order to configure your redirects for these, add a `302` or `404` key to `redirects` and nest your configuration object there (see example above).
+The `redirects` property accepts an array of redirects or rewrite rules (in order) with their respective HTTP code appended at the end as described in Netlify's documentation.
 
 ### Promises
 
