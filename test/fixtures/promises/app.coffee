@@ -3,12 +3,12 @@ W       = require 'when'
 
 config =
   redirects: [
+    '/ecommerce /closed 404'
     '/* /index.html 200'
     '/news /blog 301'
     '/news/:year/:month:/:date/:slug /blog/:year/:month/:date/:story_id 301'
     '/news/* /blog/:splat 301'
     '/temp_redirect / 302'
-    '/ecommerce /closed 404'
   ]
   headers:
     '/protected/path':
